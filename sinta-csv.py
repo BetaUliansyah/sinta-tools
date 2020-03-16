@@ -86,11 +86,9 @@ def sinta_readpages(startpage=1, lastpage=sinta_lastpage()):
     return return_value
 
 if __name__ == "__main__":
-    sinta_readpages(startpage=3, lastpage=4)
-    # main(lastpage=4)
-    # main(startpage=3, lastpage=4)
-
-
+    sinta_readpages()
+    # sinta_readpages(startpage=3, lastpage=4)
+    
 # Credits:
 # https://stackoverflow.com/questions/11716380/beautifulsoup-extract-text-from-anchor-tag
 # https://stackoverflow.com/questions/5815747/beautifulsoup-getting-href
