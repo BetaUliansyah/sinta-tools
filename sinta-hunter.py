@@ -21,7 +21,7 @@ if r.status_code==200:
                 query = urlparse(links['href']).query
                 lastpage = re.compile('page=(\d+)').findall(query)
     lastpage = lastpage[0]
-    print("Bismillah, lets start srcapping " + lastpage + " pages of Sinta journals")
+    print("Bismillah, lets start crawling " + lastpage + " pages of Sinta journals")
 
     # looping halaman Sinta sampai lastpage
     page = 1
