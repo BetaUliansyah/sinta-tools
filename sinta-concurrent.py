@@ -22,6 +22,7 @@ def sinta_singlepage(page):
     journal_names = bsoup.find_all("div", {"class":"affil-name mb-3"})
     journal_urls = bsoup.find_all("div", {"class":"affil-abbrev"})
     journal_accreditations =  bsoup.find_all("span", {"class":" num-stat accredited"})
+    journal_affiliations =  bsoup.find_all("div", {"class":"affil-loc mt-2"})
     return_value = []
     for i in range(0, len(journal_names)):
         # mencari nama jurnal
@@ -33,8 +34,10 @@ def sinta_singlepage(page):
         # mencari akreditasi jurnal
         journal_accreditation = journal_accreditations[i].text.strip()
 
+        # mencari afiliasi jurnal
+        journal_affiliation = journal_affiliations[i].text.strip() 
         # return value
-        result_data = [journal_name, journal_url, journal_accreditation]
+        result_data = [journal_name, journal_url, journal_accreditation, journal_affiliation]
         with open("sinta-data.csv", mode='a+') as sintacsv_file:
             sintacsv_writer = csv.writer(sintacsv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
             sintacsv_writer.writerow(result_data)
@@ -43,7 +46,7 @@ def sinta_singlepage(page):
     
 if __name__ == "__main__":
     filename = "sinta-data.csv"
-    header_row = ['journal_name', 'journal_url', 'journal_accreditation']
+    header_row = ['journal_name', 'journal_url', 'journal_accreditation', 'journal_affiliation']
     with open(filename, mode='w') as sintacsv_file:
         sintacsv_writer = csv.writer(sintacsv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         sintacsv_writer.writerow(header_row)
